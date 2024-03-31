@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -27,7 +28,8 @@ public class SpringbootJpaApplication implements CommandLineRunner {
         /*list();
         findOne();
         create();*/
-        update();
+        //update();
+        personalizedQueries2();
     }
 
     @Transactional(readOnly = true)
@@ -86,6 +88,30 @@ public class SpringbootJpaApplication implements CommandLineRunner {
         var id = scanner.nextLong();
 
         this.personRepository.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public void personalizedQueries() {
+        var scanner = new Scanner(System.in);
+        var id = scanner.nextLong();
+
+        System.out.println("Nombre: " + this.personRepository.getNameById(id));
+    }
+
+    @Transactional(readOnly = true)
+    public void personalizedQueries2() {
+        var personsRegs = personRepository.findAllMixPerson();
+
+        personsRegs.forEach(reg -> {
+            System.out.println("programmingLang: " + reg[1]);
+            System.out.println("person: " + reg[0]);
+        });
+
+        var persons = personRepository.findAllClassPerson();
+        persons.forEach(person -> {
+            System.out.println("name: " + person.getName());
+            System.out.println("lastname: " + person.getLastname());
+        });
     }
 
 }
