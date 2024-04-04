@@ -1,5 +1,6 @@
 package org.quantum.springbootjpa.repositories;
 
+import org.quantum.springbootjpa.dto.PersonDto;
 import org.quantum.springbootjpa.entities.Person;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -29,5 +30,8 @@ public interface IPersonRepository extends CrudRepository<Person, Long> {
 
     @Query("select new Person(p.name, p.lastname) from Person p")
     List<Person> findAllClassPerson();
+
+    @Query("select new org.quantum.springbootjpa.dto.PersonDto(p.name, p.lastname) from Person p")
+    List<PersonDto> findAllPersonDto();
 
 }

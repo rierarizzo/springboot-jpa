@@ -7,7 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -112,6 +111,9 @@ public class SpringbootJpaApplication implements CommandLineRunner {
             System.out.println("name: " + person.getName());
             System.out.println("lastname: " + person.getLastname());
         });
+
+        var personsDto = personRepository.findAllPersonDto();
+        personsDto.forEach(System.out::println);
     }
 
 }
