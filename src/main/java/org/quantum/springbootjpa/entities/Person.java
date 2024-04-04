@@ -13,6 +13,8 @@ public class Person {
     private String lastname;
     @Column(name = "programming_language")
     private String programmingLanguage;
+    @Embedded
+    private final Audit audit = new Audit();
 
     public Person() {
     }
@@ -29,37 +31,18 @@ public class Person {
         this.lastname = lastname;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getLastname() {
         return lastname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getProgrammingLanguage() {
-        return programmingLanguage;
-    }
-
     public void setProgrammingLanguage(String programmingLanguage) {
         this.programmingLanguage = programmingLanguage;
     }
+
 
     @Override
     public String toString() {
@@ -68,6 +51,8 @@ public class Person {
                 ", name='" + name + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", programmingLanguage='" + programmingLanguage + '\'' +
+                ", createdAt='" + audit.getCreatedAt() + '\'' +
+                ", updatedAt='" + audit.getUpdatedAt() + '\'' +
                 '}';
     }
 

@@ -28,7 +28,7 @@ public class SpringbootJpaApplication implements CommandLineRunner {
         findOne();
         create();*/
         //update();
-        personalizedQueries2();
+        create();
     }
 
     @Transactional(readOnly = true)
