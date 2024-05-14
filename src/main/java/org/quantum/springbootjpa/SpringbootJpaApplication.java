@@ -85,6 +85,7 @@ public class SpringbootJpaApplication implements CommandLineRunner {
         var scanner = new Scanner(System.in);
         System.out.println("Ingrese el ID del usuario:");
         var id = scanner.nextLong();
+        scanner.close();
 
         this.personRepository.deleteById(id);
     }
@@ -93,6 +94,7 @@ public class SpringbootJpaApplication implements CommandLineRunner {
     public void personalizedQueries() {
         var scanner = new Scanner(System.in);
         var id = scanner.nextLong();
+        scanner.close();
 
         System.out.println("Nombre: " + this.personRepository.getNameById(id));
     }
