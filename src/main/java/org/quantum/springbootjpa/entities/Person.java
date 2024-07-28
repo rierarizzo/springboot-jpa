@@ -1,7 +1,11 @@
 package org.quantum.springbootjpa.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@NoArgsConstructor
 @Entity
 @Table(name = "persons")
 public class Person {
@@ -9,15 +13,15 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Getter
     private String name;
+    @Getter
     private String lastname;
+    @Setter
     @Column(name = "programming_language")
     private String programmingLanguage;
     @Embedded
     private final Audit audit = new Audit();
-
-    public Person() {
-    }
 
     public Person(Long id, String name, String lastname, String programmingLanguage) {
         this.id = id;
@@ -30,19 +34,6 @@ public class Person {
         this.name = name;
         this.lastname = lastname;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setProgrammingLanguage(String programmingLanguage) {
-        this.programmingLanguage = programmingLanguage;
-    }
-
 
     @Override
     public String toString() {

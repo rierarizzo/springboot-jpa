@@ -1,37 +1,24 @@
 package org.quantum.springbootjpa.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+/**
+ * PersonDto representa un objeto de transferencia con la información de una persona.
+ */
+@Getter
+@Setter
+@AllArgsConstructor
+@ToString
 public class PersonDto {
-
+    /**
+     * Nombre de la persona.
+     */
     private String name;
+    /**
+     * Apellido de la persona.
+     */
     private String lastname;
-
-    public PersonDto(String name, String lastname) {
-        this.name = name;
-        this.lastname = lastname;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    @Override
-    public String toString() {
-        return "PersonDto{" +
-                "name='" + name + '\'' +
-                ", lastname='" + lastname + '\'' +
-                '}';
-    }
-
 }

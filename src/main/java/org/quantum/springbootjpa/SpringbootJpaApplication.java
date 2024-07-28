@@ -1,5 +1,6 @@
 package org.quantum.springbootjpa;
 
+import lombok.RequiredArgsConstructor;
 import org.quantum.springbootjpa.entities.Person;
 import org.quantum.springbootjpa.repositories.IPersonRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -9,14 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Scanner;
 
+@RequiredArgsConstructor
 @SpringBootApplication
 public class SpringbootJpaApplication implements CommandLineRunner {
 
     private final IPersonRepository personRepository;
-
-    public SpringbootJpaApplication(final IPersonRepository personRepository) {
-        this.personRepository = personRepository;
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(SpringbootJpaApplication.class, args);

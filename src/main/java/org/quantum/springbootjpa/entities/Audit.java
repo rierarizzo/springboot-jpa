@@ -4,9 +4,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
+@Getter
 @Embeddable
 public class Audit {
 
@@ -25,14 +27,6 @@ public class Audit {
     public void preUpdate() {
         System.out.println("Evento del ciclo de vida: 'PreUpdate'");
         this.updatedAt = LocalDateTime.now();
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
     }
 
 }
